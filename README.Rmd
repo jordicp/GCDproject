@@ -1,0 +1,82 @@
+---
+title: "README"
+author: "jordicp"
+date: "27/9/2015"
+output: html_document
+---
+# R script run_analysis.R
+R script consists in 5 blocks, with the text of the course project description
+of every block and the code related.
+
+## 1. Merges the training and the test sets to create one data set.
+Activities and features datasets are charged.
+The function chargeInitialSignals charge one of the files of "Inertial Signals"
+directories.
+The function chargeDataSet is prepared to charge one of datasets, test or train,
+using previous function chargeInitialSignals.
+
+Colnames of datasets charged have been already established in the charging code.
+Finally for block 1, dataSetFull data set is composed by row binding from data
+sets train and test.
+
+## 2. Extracts only the measurements on the mean and standard deviation for each 
+dataSetMeanStd is constructed without vars of features not mean neither std.
+
+## 3. Uses descriptive activity names to name the activities in the data set
+Data set dataSetMSActivities includes an activityName column from activityLabels
+data set added to dataSetMeanStd with a join via merge function.
+
+## 4. Appropriately labels the data set with descriptive variable names. 
+The same dataSetMSActivities is ok because descriptive variable names were
+established in charging phase.
+That's why tidyDataSet is the same than dataSetMSActivities.
+
+## 5. From the data set in step 4, creates a second, independent tidy data set with 
+## the average of each variable for each activity and each subject.
+# ------------------------------------------------------------------------------
+That's the most difficult block.
+Using ave function for summarizing per subject and activity is ok if you have in
+mind that mean function has to be changed adding NAs skipping parameter na.rm.
+
+Resulting AvgDataSet is ok after removing duplicates
+
+
+
+# Code book
+You will explore two data sets:
+- tidyDataSet
+- AvgDataSet
+
+The first one has features and variables for every subject and activity.
+The second one, AvgDataSet, has de average of all features and variables for
+every subject and activity.
+
+## tidyDataSet - All data
+- activity: code of activity
+- acitvityName: description of activity
+- subject: identification of the subject
+- tBodyAcc-mean()-X: first of the featured variables
+- ..
+- fBodyBodyGyroJerkMag-meanFreq(): last of the feature variables
+- total_acc_x1: total movement variables (three axis, and 128 values)
+- ...
+- total_acc_x128
+- total_acc_y1
+- ...
+- total_acc_y128
+- total_acc_z1
+- ...
+- total_acc_z128
+- body_acc_x1: body movement variables (three axis, and 128 values)
+- ...
+- body_acc_z128
+- body_gyro_x1: gyroscope variables (three axis, and 128 values)
+- ...
+- body_gyro_x1
+
+## AvgDataSet - Average of variables per subject/activity
+- activity: code of activity
+- acitvityName: description of activity
+- subject: identification of the subject
+- tBodyAcc-mean()-X: first of the featured variables
+- rest of feature and movement variables as in tidyDataSet previously exposed.
