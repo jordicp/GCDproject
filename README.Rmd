@@ -31,9 +31,7 @@ The same dataSetMSActivities is ok because descriptive variable names were
 established in charging phase.
 That's why tidyDataSet is the same than dataSetMSActivities.
 
-## 5. From the data set in step 4, creates a second, independent tidy data set with 
-## the average of each variable for each activity and each subject.
-# ------------------------------------------------------------------------------
+## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 That's the most difficult block.
 Using ave function for summarizing per subject and activity is ok if you have in
 mind that mean function has to be changed adding NAs skipping parameter na.rm.
